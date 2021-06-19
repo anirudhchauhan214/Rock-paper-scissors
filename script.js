@@ -1,5 +1,5 @@
 console.log("Let's Play !!");
-
+// Providing a random number
 const computerPlay = function () {
   let randomNumber = Math.floor(Math.random() * 3);
   if (randomNumber === 0) {
@@ -10,21 +10,26 @@ const computerPlay = function () {
     return "Scissors";
   }
 };
+// Storing Score
 let playerScore = 0;
 let computerScore = 0;
+// A round of game
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
+  // Win conditions
   if (
-    (playerSelection === "rock" && computerSelection === "scissors") || // win
+    (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     console.log(`You Win!! ${playerSelection} beats ${computerSelection}`);
     return playerScore++;
-  } else if (
-    (playerSelection === "rock" && computerSelection === "paper") || //lose
+  }
+  // Lose Condition
+  else if (
+    (playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "rock")
   ) {
@@ -38,20 +43,17 @@ function playRound(playerSelection, computerSelection) {
 // playerSelection = "rock";
 // computerSelection = computerPlay();
 // console.log(playRound(playerSelection, computerSelection));
+// Playing a game of 5 rounds
 function game() {
   let userValue = prompt("**Rock , Paper, Scissors **");
   userValue = userValue.toLowerCase();
-  if (
-    userValue === "rock" ||
-    userValue === "paper" ||
-    userValue === "scissors"
-  ) {
+  if (userValue === "rock" || userValue === "paper" || userValue === "scissors") {
     return playRound(userValue, computerPlay());
   } else {
     console.log("Enter Correct Value!!");
   }
 }
-for (i = 1; i <= 5; i++) {
+for (let i = 1; i <= 5; i++) {
   game();
 }
 if (playerScore > computerScore) {
@@ -61,3 +63,4 @@ if (playerScore > computerScore) {
 } else if (computerScore === playerScore) {
   console.log(`It's a tie.`);
 }
+console.log(`Match Over ! Wanna Play again`);
